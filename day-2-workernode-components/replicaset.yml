@@ -15,5 +15,5 @@ spec:
         type: front-end # Atleast 1 Pod label should match with ReplicaSet Label Selector
     spec:
       containers:
-      - name: nginx-container
-        image: nginx
+      - name: httpd-container
+        image: httpd
