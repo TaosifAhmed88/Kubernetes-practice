@@ -1,0 +1,38 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata : 
+  name : mydeploy
+  labels :
+    type : frontend
+spec : 
+  replicas : 4
+  selector :
+    matchLabels : 
+      type : frontend
+  template :
+    metadata :
+      name : my-pod
+      labels :
+        type: frontend
+    spec: 
+      containers:
+        - name : my-nginx
+          image : nginx:latest
+
+---
+apiVersion : v1
+kind : Service
+metadata : 
+  name: my-service
+  labels : 
+    type : frontend
+    color : blue
+spec : 
+  type : LoadBalancer
+  ports :
+    - targetPort : 80
+      port : 80
+      protocol : TCP
+  selector:
+    type : frontend
+
